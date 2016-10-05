@@ -19,6 +19,10 @@ class EntryTest(unittest.TestCase):
         fields.sort()
         self.assertEqual(fields, ['name', 'type'])
 
+    def test_return_attribute_error_for_nonexistent_field(self):
+        with self.assertRaises(AttributeError):
+            self.entry.nonexistent_field
+
 
 if __name__ == '__main__':
     unittest.main()
