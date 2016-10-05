@@ -14,6 +14,11 @@ class EntryTest(unittest.TestCase):
         self.assertEqual(self.entry.name, 'OH7RDA')
         self.assertEqual(self.entry.type, 'l')
 
+    def test_return_all_attributes(self):
+        fields = self.entry.fields
+        fields.sort()
+        self.assertEqual(fields, ['name', 'type'])
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -5,3 +5,7 @@ class Entry(object):
 
     def __getattr__(self, attr):
         return self._data[attr]
+
+    @property
+    def fields(self):
+        return self._data.keys()
