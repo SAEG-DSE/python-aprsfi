@@ -23,6 +23,16 @@ class EntryTest(unittest.TestCase):
         with self.assertRaises(AttributeError):
             self.entry.nonexistent_field
 
+    def test_return_equal_if_data_is_equal(self):
+        first_entry = Entry({'name': 'OH7RDA', 'type': 'l'})
+        second_entry = Entry({'name': 'OH7RDA', 'type': 'l'})
+        self.assertTrue(first_entry == second_entry)
+
+    def test_return_not_equal_if_data_is_not_equal(self):
+        first_entry = Entry({'name': 'OH7RDB', 'type': 'l'})
+        second_entry = Entry({'name': 'OH7RDA', 'type': 'l'})
+        self.assertFalse(first_entry == second_entry)
+
 
 if __name__ == '__main__':
     unittest.main()
