@@ -5,11 +5,11 @@ class Entry(object):
 
     @property
     def fields(self):
-        return self._data.keys()
+        return list(self._data)
 
 
     def __getattr__(self, attr):
-        if self._data.has_key(attr):
+        if attr in self._data:
             return self._data[attr]
         else:
             raise AttributeError
