@@ -1,5 +1,6 @@
 import string
 
+
 class API(object):
 
     def __init__(self, api_key):

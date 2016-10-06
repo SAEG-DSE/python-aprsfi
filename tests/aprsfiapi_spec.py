@@ -11,3 +11,5 @@ class APITest(unittest.TestCase):
 
     def test_initialize_with_string_template_for_aprs_fi_url(self):
         self.assertEqual(self.aprsfiapi._api_url, "http://api.aprs.fi/api/get?name={name}&what={what}&apikey=api_key_example&format=json")
+
+    # def test_return_basic_location_json_for_a_single_name(self):
