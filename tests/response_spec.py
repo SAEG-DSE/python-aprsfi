@@ -27,3 +27,13 @@ class ResponseTest(unittest.TestCase):
         entries = [Entry(entry) for entry in requests.many_names_locations_success()["entries"]]
         response = Response(requests.many_names_locations_success())
         self.assertEqual(response.entries, entries)
+
+    def test_return_true_if_quantity_and_names_is_equal(self):
+        first_response  = Response(requests.single_name_location_success())
+        second_response = Response(requests.single_name_location_success())
+        self.assertTrue(first_response == second_response)
+
+    def test_return_false_if_quantity_and_names_is_not_equal(self):
+        first_response  = Response(requests.single_name_location_success())
+        second_response = Response(requests.another_single_name_location_success())
+        self.assertFalse(first_response == second_response)
