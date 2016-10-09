@@ -12,5 +12,6 @@ class API(object):
 
     def loc(self, *args):
         url = self._api_url.format(name=','.join(args), what='loc')
+        # print("###" + url + "###")
         response = requests.get(url)
         return Response(json.loads(response.json()))

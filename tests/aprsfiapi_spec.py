@@ -22,3 +22,11 @@ class APITest(unittest.TestCase):
             json=json.dumps(requests.single_name_location_success(), ensure_ascii=False))
         response  = Response(requests.single_name_location_success())
         self.assertEqual(self.aprsfiapi.loc('OH7RDA'), response)
+
+    @requests_mock.mock()
+    def test_return_basic_location_json_for_many_names(self, m):
+        m.get('http://api.aprs.fi/api/get?name=OH7RDA,OH7RDB&what=loc&apikey=api_key_example&format=json',
+            json=json.dumps(requests.many_names_locations_success(), ensure_ascii=False))
+        response  = Response(requests.many_names_locations_success())
+        self.assertEqual(self.aprsfiapi.loc('OH7RDA', 'OH7RDB').found, 2)
+        self.assertEqual(self.aprsfiapi.loc('OH7RDA', 'OH7RDB'), response)
