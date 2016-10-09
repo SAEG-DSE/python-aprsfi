@@ -2,6 +2,7 @@ import unittest
 import requests_mock
 import json
 from aprsfiapi.api import API
+from aprsfiapi.api import RequestException
 from aprsfiapi.response import Response
 from aprsfiapi.tests.support import requests
 
@@ -30,3 +31,10 @@ class APITest(unittest.TestCase):
         response  = Response(requests.many_names_locations_success())
         self.assertEqual(self.aprsfiapi.loc('OH7RDA', 'OH7RDB').found, 2)
         self.assertEqual(self.aprsfiapi.loc('OH7RDA', 'OH7RDB'), response)
+
+    @requests_mock.mock()
+    def test_return_request_error(self, m):
+        m.get('http://api.aprs.fi/api/get?name=OH7RDA&what=loc&apikey=api_key_example&format=json',
+            json=json.dumps(requests.fail_request(), ensure_ascii=False))
+        with self.assertRaisesRegexp(RequestException, "authentication failed: wrong API key"):
+            self.aprsfiapi.loc('OH7RDA')

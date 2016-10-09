@@ -83,7 +83,7 @@ many_names_locations_success = lambda: {
 }
 
 
-fail_request = {
+fail_request = lambda: {
 	"command":"get",
 	"result":"fail",
 	"description":"authentication failed: wrong API key"

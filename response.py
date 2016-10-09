@@ -11,9 +11,9 @@ class Response(object):
 
     def __eq__(self, another_response):
         self_response_names = list(map(lambda e: e.name, self.entries))
+        self_response_names.sort()
         another_response_names = list(map(lambda e: e.name,
                                           another_response.entries))
-        self_response_names.sort()
         another_response_names.sort()
         return (self._data == another_response._data and
                 self_response_names == another_response_names)

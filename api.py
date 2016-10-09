@@ -3,6 +3,10 @@ import requests
 from aprsfiapi.response import Response
 
 
+class RequestException(Exception):
+    pass
+
+
 class API(object):
 
     def __init__(self, api_key):
@@ -12,6 +16,7 @@ class API(object):
 
     def loc(self, *args):
         url = self._api_url.format(name=','.join(args), what='loc')
-        # print("###" + url + "###")
         response = requests.get(url)
+        if json.loads(response.json())['result'] == 'fail':
+            raise RequestException(json.loads(response.json())['description'])
         return Response(json.loads(response.json()))
