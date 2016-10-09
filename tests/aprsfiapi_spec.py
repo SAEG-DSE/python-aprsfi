@@ -38,3 +38,25 @@ class APITest(unittest.TestCase):
             json=json.dumps(requests.fail_request(), ensure_ascii=False))
         with self.assertRaisesRegexp(RequestException, "authentication failed: wrong API key"):
             self.aprsfiapi.loc('OH7RDA')
+
+    @requests_mock.mock()
+    def test_return_basic_wx_json_for_a_single_name(self, m):
+        m.get('http://api.aprs.fi/api/get?name=OH7RDA&what=loc&apikey=api_key_example&format=json',
+            json=json.dumps(requests.single_name_wx_success(), ensure_ascii=False))
+        response  = Response(requests.single_name_wx_success())
+        self.assertEqual(self.aprsfiapi.loc('OH7RDA'), response)
+
+    @requests_mock.mock()
+    def test_return_basic_wx_json_for_many_names(self, m):
+        m.get('http://api.aprs.fi/api/get?name=OH7RDA,OH7RDB&what=loc&apikey=api_key_example&format=json',
+            json=json.dumps(requests.many_names_wxs_success(), ensure_ascii=False))
+        response  = Response(requests.many_names_wxs_success())
+        self.assertEqual(self.aprsfiapi.loc('OH7RDA', 'OH7RDB').found, 2)
+        self.assertEqual(self.aprsfiapi.loc('OH7RDA', 'OH7RDB'), response)
+
+    @requests_mock.mock()
+    def test_return_request_error(self, m):
+        m.get('http://api.aprs.fi/api/get?name=OH7RDA&what=loc&apikey=api_key_example&format=json',
+            json=json.dumps(requests.fail_request(), ensure_ascii=False))
+        with self.assertRaisesRegexp(RequestException, "authentication failed: wrong API key"):
+            self.aprsfiapi.loc('OH7RDA')

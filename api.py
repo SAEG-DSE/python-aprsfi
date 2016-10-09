@@ -20,3 +20,10 @@ class API(object):
         if json.loads(response.json())['result'] == 'fail':
             raise RequestException(json.loads(response.json())['description'])
         return Response(json.loads(response.json()))
+
+    def wx(self, *args):
+        url = self._api_url.format(name=','.join(args), what='wx')
+        response = requests.get(url)
+        if json.loads(response.json())['result'] == 'fail':
+            raise RequestException(json.loads(response.json())['description'])
+        return Response(json.loads(response.json()))

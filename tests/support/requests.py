@@ -82,9 +82,52 @@ many_names_locations_success = lambda: {
 	]
 }
 
-
 fail_request = lambda: {
 	"command":"get",
 	"result":"fail",
 	"description":"authentication failed: wrong API key"
+}
+single_name_wx_success = lambda: {
+	"command":"get",
+	"result":"ok",
+	"what":"wx",
+	"found":1,
+	"entries": [
+		{
+			"name":"OH2TI",
+			"time":"1270580978",
+			"temp":"2.8",
+			"pressure":"1022.1",
+			"humidity":"88",
+			"wind_direction":"270",
+			"wind_speed":"2.7"
+		}
+	]
+}
+
+many_names_wxs_success = lambda: {
+	"command":"get",
+	"result":"ok",
+	"what":"wx",
+	"found":2,
+	"entries": [
+		{
+			"name":"OH2TI",
+			"time":"1270580978",
+			"temp":"2.8",
+			"pressure":"1022.1",
+			"humidity":"88",
+			"wind_direction":"270",
+			"wind_speed":"2.7"
+		},
+		{
+		"name":"OH2TE",
+		"time":"1270580978",
+		"temp":"2.8",
+		"pressure":"1022.1",
+		"humidity":"88",
+		"wind_direction":"270",
+		"wind_speed":"2.7"
+		}
+	]
 }
