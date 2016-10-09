@@ -12,9 +12,9 @@ class Response(object):
     def __eq__(self, another_response):
         self_response_names = list(map(lambda e: e.name, self.entries))
         another_response_names = list(map(lambda e: e.name,
-            another_response.entries))
+                                          another_response.entries))
         return (self._data == another_response._data and
-            self_response_names == another_response_names)
+                self_response_names == another_response_names)
 
     def __getattr__(self, attr):
         if attr in self._data:

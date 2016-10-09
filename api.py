@@ -2,6 +2,7 @@ import json
 import requests
 from aprsfiapi.response import Response
 
+
 class API(object):
 
     def __init__(self, api_key):
