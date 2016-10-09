@@ -20,7 +20,8 @@ class API(object):
                 url = self._api_url.format(name=','.join(args), what=attr)
                 response = requests.get(url)
                 if json.loads(response.json())['result'] == 'fail':
-                    raise RequestException(json.loads(response.json())['description'])
+                    raise RequestException(
+                        json.loads(response.json())['description'])
                 return Response(json.loads(response.json()))
             return request
         else:
