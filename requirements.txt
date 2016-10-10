@@ -1,0 +1,7 @@
+json
+requests
+
+#tests-lib
+requests-mock
+nose
+coverage

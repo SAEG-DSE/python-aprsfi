@@ -1,5 +1,5 @@
 import unittest
-from aprsfiapi.entry import Entry
+from aprsfi.entry import Entry
 
 
 class EntryTest(unittest.TestCase):

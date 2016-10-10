@@ -1,6 +1,6 @@
 import json
 import requests
-from aprsfiapi.response import Response
+from aprsfi.response import Response
 
 
 class RequestException(Exception):

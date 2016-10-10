@@ -1,4 +1,4 @@
-from aprsfiapi.entry import Entry
+from aprsfi.entry import Entry
 
 
 class Response(object):

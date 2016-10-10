@@ -1,7 +1,7 @@
 import unittest
-from aprsfiapi.response import Response
-from aprsfiapi.tests.support import requests
-from aprsfiapi.entry import Entry
+from aprsfi.response import Response
+from .support import requests
+from aprsfi.entry import Entry
 
 
 class ResponseTest(unittest.TestCase):
