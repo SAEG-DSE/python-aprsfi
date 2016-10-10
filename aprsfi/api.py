@@ -19,10 +19,11 @@ class API(object):
             def request(*args):
                 url = self._api_url.format(name=','.join(args), what=attr)
                 response = requests.get(url)
-                if json.loads(response.json())['result'] == 'fail':
+                response_json = response.json()
+                if response_json['result'] == 'fail':
                     raise RequestException(
-                        json.loads(response.json())['description'])
-                return Response(json.loads(response.json()))
+                        response_json['description'])
+                return Response(response_json)
             return request
         else:
             raise AttributeError

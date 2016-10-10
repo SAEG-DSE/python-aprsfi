@@ -1,4 +1,5 @@
 import unittest
+import json
 from aprsfi.response import Response
 from .support import requests
 from aprsfi.entry import Entry

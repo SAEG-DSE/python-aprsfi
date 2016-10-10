@@ -1,3 +1,5 @@
+import json
+
 single_name_location_success = lambda: {
 	"command":"get",
 	"result":"ok",
@@ -87,6 +89,7 @@ fail_request = lambda: {
 	"result":"fail",
 	"description":"authentication failed: wrong API key"
 }
+
 single_name_wx_success = lambda: {
 	"command":"get",
 	"result":"ok",
