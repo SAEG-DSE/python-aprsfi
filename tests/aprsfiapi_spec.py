@@ -60,3 +60,7 @@ class APITest(unittest.TestCase):
             json=json.dumps(requests.fail_request(), ensure_ascii=False))
         with self.assertRaisesRegexp(RequestException, "authentication failed: wrong API key"):
             self.aprsfiapi.loc('OH7RDA')
+
+    def test_return_attribute_error_for_nonexistent_field(self):
+        with self.assertRaises(AttributeError):
+            self.aprsfiapi.nonexistent_field

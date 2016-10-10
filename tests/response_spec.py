@@ -37,3 +37,8 @@ class ResponseTest(unittest.TestCase):
         first_response  = Response(requests.single_name_location_success())
         second_response = Response(requests.another_single_name_location_success())
         self.assertFalse(first_response == second_response)
+
+    def test_return_attribute_error_for_nonexistent_field(self):
+        response = Response(requests.single_name_location_success())
+        with self.assertRaises(AttributeError):
+            response.nonexistent_field
