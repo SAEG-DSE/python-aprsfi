@@ -15,6 +15,7 @@ setup(
     author="Whanderley Souza Freitas",
     author_email='whanderley.souza@iff.edu.br',
     install_requires=['requests', 'json'],
-    url='https://github.com/SAEG-DSE/aprsfi.git',
+    url='https://github.com/SAEG-DSE/aprsfi',
+    download_url='https://github.com/SAEG-DSE/python-aprsfi/archive/0.1.tar.gz',
     keywords='aprsfi api client wrapper',
 )
