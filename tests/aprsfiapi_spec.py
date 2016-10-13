@@ -62,5 +62,5 @@ class APITest(unittest.TestCase):
             self.aprsfi.loc('OH7RDA')
 
     def test_return_attribute_error_for_nonexistent_field(self):
-        with self.assertRaises(AttributeError):
+        with self.assertRaisesRegexp(AttributeError, "API object has no attribute nonexistent_field"):
             self.aprsfi.nonexistent_field

@@ -7,7 +7,7 @@ except ImportError:
 
 setup(
     name='aprsfi',
-    version='0.1',
+    version='0.2',
     license='LGPLv3',
     description='python client aprs.fi API.',
     long_description='A complete Python client for aprs.fi',
@@ -16,6 +16,6 @@ setup(
     author_email='whanderley.souza@iff.edu.br',
     install_requires=['requests'],
     url='https://github.com/SAEG-DSE/aprsfi',
-    download_url='https://github.com/SAEG-DSE/python-aprsfi/archive/0.1.tar.gz',
+    download_url='https://github.com/SAEG-DSE/python-aprsfi/archive/0.2.tar.gz',
     keywords='aprsfi api client wrapper',
 )

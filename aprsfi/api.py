@@ -26,4 +26,4 @@ class API(object):
                 return Response(response_json)
             return request
         else:
-            raise AttributeError
+            raise AttributeError("API object has no attribute " + attr)

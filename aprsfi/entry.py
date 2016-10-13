@@ -14,4 +14,4 @@ class Entry(object):
         if attr in self._data:
             return self._data[attr]
         else:
-            raise AttributeError
+            raise AttributeError("Entry object has no attribute " + attr)

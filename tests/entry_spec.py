@@ -20,7 +20,7 @@ class EntryTest(unittest.TestCase):
         self.assertEqual(fields, ['name', 'type'])
 
     def test_return_attribute_error_for_nonexistent_field(self):
-        with self.assertRaises(AttributeError):
+        with self.assertRaisesRegexp(AttributeError, "Entry object has no attribute nonexistent_field"):
             self.entry.nonexistent_field
 
     def test_return_equal_if_data_is_equal(self):
