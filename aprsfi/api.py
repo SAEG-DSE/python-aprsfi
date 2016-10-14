@@ -23,6 +23,9 @@ class API(object):
                 if response_json['result'] == 'fail':
                     raise RequestException(
                         response_json['description'])
+                elif response_json['found'] != len(args):
+                    raise RequestException("Quantity of entries different "
+                      "of quantity of names passed")
                 return Response(response_json)
             return request
         else:

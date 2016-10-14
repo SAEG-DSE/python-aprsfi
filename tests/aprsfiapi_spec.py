@@ -64,3 +64,10 @@ class APITest(unittest.TestCase):
     def test_return_attribute_error_for_nonexistent_field(self):
         with self.assertRaisesRegexp(AttributeError, "API object has no attribute nonexistent_field"):
             self.aprsfi.nonexistent_field
+
+    @requests_mock.mock()
+    def test_return_request_error_where_number_of_response_is_lower_than_passeds_names(self, m):
+        m.get('http://api.aprs.fi/api/get?name=OH7RDA,OH7RDB&what=loc&apikey=api_key_example&format=json',
+            json=requests.single_name_location_success())
+        with self.assertRaisesRegexp(RequestException, "Quantity of entries different of quantity of names passed"):
+            self.aprsfi.loc('OH7RDA', 'OH7RDB')
